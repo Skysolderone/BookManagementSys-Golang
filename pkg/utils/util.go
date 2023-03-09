@@ -1,0 +1,20 @@
+/*
+Create time at 2023年3月9日0009下午 16:23:08
+Create User at Administrator
+*/
+
+package utils
+
+import (
+	"encoding/json"
+	"io/ioutil"
+	"net/http"
+)
+
+func ParseBody(r *http.Request, X interface{}) {
+	if body, err := ioutil.ReadAll(r.Body); err == nil {
+		if err = json.Unmarshal(body, X); err != nil {
+			return
+		}
+	}
+}
